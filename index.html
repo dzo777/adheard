@@ -3,51 +3,155 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ADHEARD</title>
+    <title>Adheard - Hyper-Local Screen Media Network</title>
     <style>
+        :root {
+            --primary: #0f172a;
+            --accent: #2563eb;
+            --accent-hover: #1d4ed8;
+            --bg-light: #f8fafc;
+            --text-dark: #1e293b;
+            --text-muted: #64748b;
+        }
+
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: system-ui, -apple-system, sans-serif; line-height: 1.6; color: #333; background: #f8fafc; }
-        header { background: #0f172a; color: #fff; text-align: center; padding: 4rem 1rem; }
-        header h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
-        header p { font-size: 1.25rem; color: #94a3b8; }
-        .container { max-width: 1000px; margin: 0 auto; padding: 3rem 1rem; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
-        .card { background: #fff; padding: 2rem; border-radius: 8px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); }
-        .card h3 { color: #0f172a; margin-bottom: 0.5rem; }
-        .cta { background: #2563eb; color: #fff; text-align: center; padding: 3rem 1rem; border-radius: 8px; margin-top: 3rem; }
-        .btn { display: inline-block; background: #fff; color: #2563eb; padding: 0.75rem 1.5rem; text-decoration: none; font-weight: bold; border-radius: 6px; margin-top: 1rem; }
-        footer { text-align: center; padding: 2rem; color: #64748b; font-size: 0.9rem; }
+        body { font-family: system-ui, -apple-system, sans-serif; line-height: 1.6; color: var(--text-dark); background: var(--bg-light); }
+        
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
+
+        /* Header / Hero Section */
+        header { background: var(--primary); color: #fff; text-align: center; padding: 4rem 1rem; }
+        .logo { font-size: 2.2rem; font-weight: 800; letter-spacing: 2px; color: #fff; margin-bottom: 0.5rem; }
+        .tagline { color: #94a3b8; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1.5rem; }
+        header h1 { font-size: 2.5rem; max-width: 800px; margin: 0 auto 1rem; font-weight: 700; }
+        header p.hero-desc { font-size: 1.2rem; color: #cbd5e1; max-width: 700px; margin: 0 auto; }
+
+        /* Stats Section */
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; margin-top: -2.5rem; }
+        .stat-card { background: #fff; text-align: center; padding: 2rem 1rem; border-radius: 12px; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
+        .stat-number { font-size: 2.2rem; font-weight: 800; color: var(--accent); }
+        .stat-label { font-size: 0.9rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; margin-top: 0.5rem; }
+
+        /* General Section Layout */
+        section { padding: 4rem 0; }
+        .section-title { text-align: center; font-size: 2rem; color: var(--primary); margin-bottom: 2.5rem; text-transform: uppercase; font-weight: 800; }
+
+        /* Comparison Table Section */
+        .table-container { overflow-x: auto; background: #fff; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); }
+        table { width: 100%; border-collapse: collapse; text-align: left; }
+        th, td { padding: 1.2rem; border-bottom: 1px solid #e2e8f0; }
+        th { background: #f1f5f9; color: var(--primary); font-weight: 700; }
+        th:nth-child(3), td:nth-child(3) { background: #eff6ff; font-weight: 600; color: var(--accent); }
+
+        /* Benefits Grid */
+        .benefits-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+        .benefit-card { background: #fff; padding: 2rem; border-radius: 12px; border-left: 5px solid var(--accent); box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); }
+        .benefit-card h3 { color: var(--primary); margin-bottom: 0.75rem; font-size: 1.3rem; }
+
+        /* Starter Package & CTA */
+        .package-card { background: linear-gradient(135deg, #1e293b, #0f172a); color: #fff; border-radius: 16px; padding: 3rem 2rem; text-text-align: center; max-width: 800px; margin: 0 auto; text-align: center; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.2); }
+        .package-tag { background: var(--accent); color: #fff; display: inline-block; padding: 0.4rem 1rem; border-radius: 20px; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; margin-bottom: 1rem; }
+        .price { font-size: 3rem; font-weight: 800; margin: 1rem 0; color: #38bdf8; }
+        .price span { font-size: 1.2rem; color: #94a3b8; font-weight: 400; }
+        .contact-info { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem; margin-top: 2rem; font-size: 1.1rem; }
+        .contact-item { background: rgba(255,255,255,0.1); padding: 0.75rem 1.5rem; border-radius: 8px; text-decoration: none; color: #fff; }
+
+        footer { text-align: center; padding: 2rem; color: var(--text-muted); font-size: 0.9rem; }
     </style>
 </head>
 <body>
 
+    <!-- Header Section -->
     <header>
-        <h1>ADHEARD</h1>
-        <p>Providing high-quality services to help your business grow.</p>
+        <div class="logo">ADHEARD</div>
+        <div class="tagline">Hyper-Local Screen Media Network</div>
+        <h1>Put Your Brand Inside 500+ Premium Homes Nearby</h1>
+        <p class="hero-desc">Advertise directly in high-traffic elevator lobbies of top apartment complexes. Zero skip buttons, 100% captive local audience.</p>
     </header>
 
     <div class="container">
-        <h2>Our Services</h2>
-        <div class="grid">
-            <div class="card">
-                <h3>Service One</h3>
-                <p>Advertise directly in high-traffice elevator lobbies of top appartment complex</p>
+        <!-- Key Metrics -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">100%</div>
+                <div class="stat-label">Local Foot Traffic</div>
             </div>
-            <div class="card">
-                <h3>Service Two</h3>
-                <p>Description of what you offer and how it benefits your customers.</p>
+            <div class="stat-card">
+                <div class="stat-number">180+</div>
+                <div class="stat-label">Daily Plays / Screen</div>
             </div>
-            <div class="card">
-                <h3>Service Three</h3>
-                <p>Description of what you offer and how it benefits your customers.</p>
+            <div class="stat-card">
+                <div class="stat-number">&lt; 2 km</div>
+                <div class="stat-label">Radius Targeting</div>
             </div>
         </div>
 
-        <div class="cta">
-            <h2>Ready to work with us?</h2>
-            <p>Get in touch with our team today.</p>
-            <a href="mailto:sales@adheard.in" class="btn">Contact Us:  9632983566</a>
-        </div>
+        <!-- Comparison Table -->
+        <section>
+            <h2 class="section-title">Why Apartment Screens Beat Social Media Ads</h2>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th>Social Media Ads</th>
+                            <th>Adheard Lobby Screens</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Target Audience</strong></td>
+                            <td>Scattered City-Wide</td>
+                            <td>High-Income Neighborhood Residents</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Ad Visibility</strong></td>
+                            <td>Scrolled Past in 1 Sec</td>
+                            <td>Un-skippable HD Display in Elevator Lobbies</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Ad Fatigue</strong></td>
+                            <td>High Skip & Ad-Blocker Rates</td>
+                            <td>Captive Audience While Waiting</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Conversion Trackability</strong></td>
+                            <td>Low Offline Foot Traffic</td>
+                            <td>Tracked via QR Codes & Custom Promo Codes</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Key Benefits -->
+        <section>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <h3>Guaranteed Radius Targeting</h3>
+                    <p>Stop paying for impressions across the entire city. Reach households living 3 to 5 minutes away from your doors.</p>
+                </div>
+                <div class="benefit-card">
+                    <h3>Free Creative Setup</h3>
+                    <p>Don't have a video designer? We format and design high-converting display templates at zero extra cost.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call To Action & Pricing -->
+        <section>
+            <div class="package-card">
+                <span class="package-tag">Exclusive Starter Package</span>
+                <h2>Start Advertising in Your Neighborhood Today</h2>
+                <p style="color: #94a3b8; margin-top: 0.5rem;">Test a 30-day un-skippable ad display campaign in your neighborhood</p>
+                <div class="price">₹1,500 <span>/ Month</span></div>
+                <p>Grow your local customer base with targeted lobby screen placements.</p>
+                <div class="contact-info">
+                    <a href="tel:+919632983566" class="contact-item">📞 +91 96329 83566</a>
+                    <a href="mailto:sales@adheard.in" class="contact-item">✉️ sales@adheard.in</a>
+                </div>
+            </div>
+        </section>
     </div>
 
     <footer>
