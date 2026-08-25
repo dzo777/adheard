@@ -12,10 +12,12 @@
             --bg-light: #f8fafc;
             --text-dark: #1e293b;
             --text-muted: #64748b;
+            --whatsapp: #25D366;
+            --whatsapp-hover: #128C7E;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: system-ui, -apple-system, sans-serif; line-height: 1.6; color: var(--text-dark); background: var(--bg-light); }
+        body { font-family: system-ui, -apple-system, sans-serif; line-height: 1.6; color: var(--text-dark); background: var(--bg-light); position: relative; }
         
         .container { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
 
@@ -97,9 +99,37 @@
         .package-tag { background: var(--accent); color: #fff; display: inline-block; padding: 0.4rem 1rem; border-radius: 20px; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; margin-bottom: 1rem; }
         .price { font-size: 3rem; font-weight: 800; margin: 1rem 0; color: #38bdf8; }
         .price span { font-size: 1.2rem; color: #94a3b8; font-weight: 400; }
-        .contact-info { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem; margin-top: 2rem; font-size: 1.1rem; }
-        .contact-item { background: rgba(255,255,255,0.1); padding: 0.75rem 1.5rem; border-radius: 8px; text-decoration: none; color: #fff; transition: background 0.3s; }
+        .contact-info { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; margin-top: 2rem; font-size: 1rem; }
+        
+        .contact-item { background: rgba(255,255,255,0.1); padding: 0.75rem 1.25rem; border-radius: 8px; text-decoration: none; color: #fff; transition: background 0.3s; font-weight: 600; }
         .contact-item:hover { background: rgba(255,255,255,0.2); }
+        
+        /* Specific styling for WhatsApp elements */
+        .whatsapp-item { background: var(--whatsapp); color: white; border: none; }
+        .whatsapp-item:hover { background: var(--whatsapp-hover); }
+
+        .floating-whatsapp {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--whatsapp);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 700;
+            text-decoration: none;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+        .floating-whatsapp:hover {
+            transform: translateY(-3px);
+            background-color: var(--whatsapp-hover);
+        }
 
         footer { text-align: center; padding: 2rem; color: var(--text-muted); font-size: 0.9rem; }
     </style>
@@ -235,9 +265,12 @@
                 <p style="color: #94a3b8; margin-top: 0.5rem;">Test a 30-day un-skippable ad display campaign in your neighborhood</p>
                 <div class="price">₹1,500 <span>/ Month</span></div>
                 <p>Grow your local customer base with targeted lobby screen placements.</p>
+                
+                <!-- Contact Buttons (Now includes WhatsApp inline) -->
                 <div class="contact-info">
                     <a href="tel:+919632983566" class="contact-item">📞 +91 96329 83566</a>
                     <a href="mailto:sales@adheard.in" class="contact-item">✉️ sales@adheard.in</a>
+                    <a href="https://wa.me/919632983566" class="contact-item whatsapp-item" target="_blank" rel="noopener noreferrer">💬 WhatsApp Us</a>
                 </div>
             </div>
         </section>
@@ -246,6 +279,11 @@
     <footer>
         <p>&copy; 2026 Adheard. All rights reserved.</p>
     </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/919632983566" class="floating-whatsapp" target="_blank" rel="noopener noreferrer">
+        💬 Chat with us
+    </a>
 
 </body>
 </html>
